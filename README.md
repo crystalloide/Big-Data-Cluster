@@ -11,7 +11,7 @@
 8. [Accès à la base de données PostgreSQL](#Accès_à_la_base_de_données_PostgreSQL)
 9. [Accès à Kadmin](#Accès_à_kadmin)
 10. [Exécution de requêtes Hive](#Exécution_de_requêtes_Hive)
-11. [Exécution de PySpark_en_mode_Yarn](#Exécution_de_PySpark_en_mode_YARN)
+11. [Exécution de PySpark](#Exécution_de_PySpark)
 12. [Exécution de Sqoop](#Exécution_de_Sqoop)
 13. [Exécution d'airflow](#run-airflow)
 14. [Création d'un topic Kafka](#Création_topic_kafka)
