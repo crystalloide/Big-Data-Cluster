@@ -4,8 +4,8 @@
 1. [Présentation](#Présentation)
 2. [Applications](#applications)
 3. [Exécution d'un cluster Big Data](#Exécution_cluster_Big_Data)
-4. [Accès aux conteneurs Docker](#access-docker-containers)
-5. [Accès à l'écosystème Hadoop](#access-hadoop-ecosystem)
+4. [Accès aux conteneurs Docker](#Accès_aux_conteneurs_Docker)
+5. [Accès à l'écosystème Hadoop](#Accès_à_l'écosystème_hadoop)
 6. [Conteneurs exécutés dans le cluster](#containers-running-in-the-cluster)
 7. [Accès à HDFS](#access-hdfs)
 8. [Accès à la base de données Postgres](#access-postgres-db)
@@ -137,16 +137,14 @@ docker compose -f all-docker-compose.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
-## Accéder aux conteneurs Docker
-Vous pouvez accéder à un conteneur
-## Accéder aux conteneurs Docker
-Vous pouvez accéder à un conteneur en exécutant la commande suivante :
+## Accès_aux_conteneurs_Docker
+Vous pouvez accéder à un conteneur ainsi : 
 ```sh
 sudo docker exec -it <nom-conteneur> /bin/bash
 ```
-Si cela ne fonctionne pas, remplacez `/bin/bash` par `/bin/sh`
+Remarque : Dans certains cas où cela ne fonctionne pas, remplacez `/bin/bash` par `/bin/sh`
 
-## Accéder à l'écosystème Hadoop
+## Accès_à_l'écosystème_hadoop
 Voici la liste des technologies ou frameworks exposés à l'hôte. Vous pouvez y accéder via les URL suivantes :
 |Application | URL |
 |--- |--- |
