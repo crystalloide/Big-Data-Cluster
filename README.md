@@ -3,7 +3,7 @@
 ## Table des matières
 1. [Présentation](#Présentation)
 2. [Applications](#applications)
-3. [Exécution d'un cluster Big Data](#Exécution_cluster_Big_Data)
+3. [Exécution cluster Big Data](#Exécution_cluster_Big_Data)
 4. [Accès aux conteneurs Docker](#Accès_aux_conteneurs_Docker)
 5. [Accès à l'écosystème Hadoop](#Accès_écosystème_hadoop)
 6. [Conteneurs exécutés dans le cluster](#containers_en_exécution_dans_le_cluster)
