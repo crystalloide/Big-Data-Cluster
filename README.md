@@ -14,7 +14,7 @@
 11. [Exécution de PySpark](#Exécution_de_PySpark)
 12. [Exécution de Sqoop](#Exécution_de_Sqoop)
 13. [Exécution avec Airflow](#Exécution_avec_Airflow)
-14. [Création d'un topic Kafka](#Création_topic_kafka)
+14. [Création d'un topic Kafka](#Création_topic_Kafka)
 15. [Producteur Kafka](#Création_producer_kafka)
 16. [Consommateur Kafka](#Création_consumer_kafka)
 17. [Lancement_agents_Flume](#Lancement_agents_Flume)
@@ -272,7 +272,7 @@ passwd root
 ```
 
 ________________________________________________________________________________________________
-## Exécution_d_Airflow
+## Exécution_avec_Airflow
 Pour planifier des tâches dans Airflow, des DAG doivent être créés.
 Vos scripts DAG doivent être conservés dans le répertoire « /dags » du projet. Vos scripts se synchroniseront automatiquement avec le conteneur et vous pourrez consulter votre DAG via l'interface utilisateur d'Airflow.
 
@@ -291,7 +291,7 @@ SequentialExecutor utilise SQLite pour stocker les métadonnées. Si vous souhai
 | e-mail | admin@gmail.com |
 
 ________________________________________________________________________________________________
-## Créer une rubrique Kafka
+## Création_topic_Kafka
 Vous pouvez créer une rubrique Kafka depuis l'interface de ligne de commande (CLI) ou le centre de contrôle Kafka. Vous pouvez définir la valeur maximale du facteur de réplication sur 1, car ce cluster n'exécute qu'un seul broker Kafka.
 
 ##### CLI
