@@ -13,9 +13,9 @@
 10. [Exécution de requêtes Hive](#Exécution_de_requêtes_Hive)
 11. [Exécution de PySpark](#Exécution_de_PySpark)
 12. [Exécution de Sqoop](#Exécution_de_Sqoop)
-13. [Exécution d'airflow](#run-airflow)
+13. [Exécution d_Airflow](#Exécution d_Airflow)
 14. [Création d'un topic Kafka](#Création_topic_kafka)
-15. [Producteur Kafka](#Création-producer_kafka)
+15. [Producteur Kafka](#Création_producer_kafka)
 16. [Consommateur Kafka](#Création_consumer_kafka)
 17. [Lancement_agents_Flume](#Lancement_agents_Flume)
 18. [Exécution_requêtes_Cassandra](#Exécution_requêtes_Cassandra)
@@ -254,7 +254,7 @@ La commande ci-dessus crée le fichier `conda_env.tar.gz` dans le répertoire co
 Vous pouvez planifier des tâches Spark depuis [Airflow](https://airflow.apache.org/docs/apache-airflow/stable/). Vous avez besoin du [fournisseur Spark](https://airflow.apache.org/docs/apache-airflow-providers-apache-spark/stable/index.html) déjà installé pour planifier des tâches Spark. Pour exécuter des tâches Spark dans un cluster Spark autonome, définissez l'hôte sur « namenode » et le port sur « 7077 » lors de la création d'une connexion Spark dans Airflow.
 
 ________________________________________________________________________________________________
-## Exécuter sqoop
+## Exécution_de_Sqoop
 [Sqoop](https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html) est installé dans le conteneur Hive-server. Vous trouverez ci-dessous un exemple de commande pour importer des données avec sqoop. ```sh
 sqoop import --connect jdbc:postgresql://external_postgres_db/external --username external --password external --table <nom-de-votre-table> --target-dir <répertoire-dans-hdfs> --m 1
 ```
@@ -272,7 +272,7 @@ passwd root
 ```
 
 ________________________________________________________________________________________________
-## Exécution d'Airflow
+## Exécution_d_Airflow
 Pour planifier des tâches dans Airflow, des DAG doivent être créés.
 Vos scripts DAG doivent être conservés dans le répertoire « /dags » du projet. Vos scripts se synchroniseront automatiquement avec le conteneur et vous pourrez consulter votre DAG via l'interface utilisateur d'Airflow.
 
