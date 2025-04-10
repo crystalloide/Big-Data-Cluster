@@ -25,7 +25,7 @@
 22. [Configuration_Zeppelin](#configuration_Zeppelin)
 23. [Configuration_Airflow](#configuration_Airflow)
 24. [Configuration_de_Sqoop](#configuration_de_Sqoop)
-25. [Configuration_serveur_SSH](#configuration_serveur_SSH)
+25. [Configuration_du_serveur_SSH](#configuration_du_serveur_SSH)
 26. [Création_image_docker_personnalisée](#Création_image_docker_personnalisée)
 27. [Gestion_des_ressources](#Gestion_des_ressources)
 28. [Dépendances](#Dépendances)
@@ -521,15 +521,15 @@ J'ai modifié sa configuration par défaut afin qu'elle puisse enregistrer le mo
 ```
 
 ________________________________________________________________________________________________
-## Configurer le serveur SSH
+## Configuration_du_serveur_SSH
 Un serveur SSH s'exécute sur le conteneur Hive-Server. Vous pouvez le configurer en modifiant le fichier `configs/hive_server/sshd_config.conf` dans le répertoire du projet. Je l'ai configuré pour autoriser l'authentification par mot de passe et la connexion en tant que root.
 
 ________________________________________________________________________________________________
-## Créer des images Docker personnalisées
+## Création_images_Docker_personnalisées
 Vous pouvez personnaliser les images utilisées dans ces fichiers YAML Docker. Le répertoire `docker_image_conf` contient les fichiers Docker pour la création d'images.
 
 ________________________________________________________________________________________________
-## Gérer les ressources
+## Gestion_des_ressources
 Je recommande d'utiliser un poste de travail doté d'au moins 4 cœurs hyperthreadés et de 8 Go de RAM pour exécuter ce cluster. De plus, je déconseille d'exécuter d'autres programmes simultanément, car cela pourrait entraîner des pénuries de ressources et d'autres problèmes lors de l'utilisation de certains ports.
 
 ##### Réduire l'utilisation des ressources
