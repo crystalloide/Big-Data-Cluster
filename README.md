@@ -316,7 +316,8 @@ kafka-console-producer --broker-list kafka-broker:29092 --topic <topic-name> --p
 > Remarque : La commande ci-dessus crée un producteur qui envoie des données sans clé.
 
 ##### Utilisation du conteneur schema-registry
-Pour créer un producteur avro via l'interface de ligne de commande, accédez au conteneur « schema-registry » et exécutez la commande suivante. ```sh
+Pour créer un producteur avro via l'interface de ligne de commande, accédez au conteneur « schema-registry » et exécutez la commande suivante. 
+```sh
 kafka-avro-console-producer \
 --broker-list kafka-broker:29092 \
 --topic <topic-name> \
