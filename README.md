@@ -15,8 +15,8 @@
 12. [Exécution de Sqoop](#Exécution_de_Sqoop)
 13. [Exécution avec Airflow](#Exécution_avec_Airflow)
 14. [Création d'un topic Kafka](#Création_topic_Kafka)
-15. [Producteur Kafka](#Création_producer_kafka)
-16. [Consommateur Kafka](#Création_consumer_kafka)
+15. [Producteur Kafka](#Producteur_kafka)
+16. [Consommateur Kafka](#Consommateur_kafka)
 17. [Lancement_agents_Flume](#Lancement_agents_Flume)
 18. [Exécution_requêtes_Cassandra](#Exécution_requêtes_Cassandra)
 19. [Jars_disponibles](#Jars_disponibles)
@@ -24,7 +24,7 @@
 21. [Configuration_Hue](#configuration-hue)
 22. [Configuration_Zeppelin](#configuration-zeppelin)
 23. [Configuration_Airflow](#configuration-airflow)
-24. [Configuration_Sqoop](#configuration-sqoop)
+24. [Configuration_Sqoop](#configuration_de_sqoop)
 25. [Configuration_serveur_SSH](#configuration-ssh-server)
 26. [Création_image_docker_personnalisée](#Création_image_docker_personnalisée)
 27. [Gestion_des_ressources](#Gestion_des_ressources)
@@ -304,7 +304,7 @@ kafka-topics --bootstrap-server kafka-broker:29092 --create --topic <topic-name>
 Il s'agit d'une interface utilisateur fournie par Confluent. Pour y accéder, consultez la section [Accéder à l'écosystème Hadoop](#access-hadoop-ecosystem).
 
 ________________________________________________________________________________________________
-## Lancement_producteur_Kafka
+## Producteur_Kafka
 Vous pouvez créer un producteur Kafka depuis l'interface de ligne de commande (CLI) ou le centre de contrôle Kafka.
 
 #### CLI
@@ -328,7 +328,7 @@ kafka-avro-console-producer \
 ### Kadmin
 Vous pouvez créer un producteur simple ou un producteur avro avec Kadmin.
 
-## Créer un consommateur Kafka
+## Consommateur_Kafka
 Vous pouvez créer un consommateur kakfka depuis l'interface de ligne de commande ou avec KAdmin.
 
 ### CLI
@@ -354,7 +354,7 @@ kafka-avro-console-consumer \
 Vous pouvez créer un consommateur simple ou un consommateur Avro avec Kadmin.
 
 ________________________________________________________________________________________________
-## Exécution des agents Flume
+## Lancement_agents_Flume
 [Flume](https://flume.apache.org/FlumeUserGuide.html) est installé dans « namenode ». Pour configurer les agents Flume, vous devez configurer le fichier « flume_config/flume.conf » dans le répertoire du projet. Pour démarrer les agents Flume, accédez à namenode et exécutez la commande ci-dessous.
 ```sh
 flume-ng agent --conf conf --conf-file /opt/flume/conf/flume.conf --name <agent-name> -Dflume.root.logger=INFO,console
@@ -364,14 +364,14 @@ La commande ci-dessus exécute Flume dans la console.
 Vous pouvez également créer un service Flume et le gérer en tant que tel.
 
 ________________________________________________________________________________________________
-## Exécution de requêtes dans Cassandra
+## Exécution_requêtes_Cassandra
 Accédez au conteneur Cassandra et exécutez la commande ci-dessous pour lancer l'exécution de requêtes CQL.
 ```sh
 cqlsh
 ```
 
 ________________________________________________________________________________________________
-## Jars disponibles
+## Jars_disponibles
 Voici une liste de fichiers jar supplémentaires disponibles et utilisables dans « spark ».
 Ces fichiers jar se trouvent dans le répertoire `/opt/spark/jars/` du conteneur `namenode`.
 | ID de groupe | ID d'artefact | Nom de fichier | Version |
@@ -389,7 +389,7 @@ Ces fichiers jar se trouvent dans le répertoire `/opt/spark/jars/` du conteneur
 | org.postgresql | postgresql | postgresql-42.5.0.jar | 42.5.0 |
 
 ________________________________________________________________________________________________
-## Configuration de Hadoop
+## Configuration_Hadoop
 Vous pouvez configurer l'allocation de ressources à chaque conteneur en modifiant le fichier « hadoop.env » dans le répertoire du projet.
 
 ##### Configuration de YARN
@@ -405,7 +405,7 @@ Vous pouvez configurer l'allocation de ressources à chaque conteneur en modifia
 - MAPRED_CONF_mapreduce_reduce_memory_mb : Détermine l’allocation mémoire maximale pour un réducteur. Par défaut, elle est fixée à 8 Go. Vous pouvez l’augmenter si vous disposez de ressources supplémentaires.
 
 ________________________________________________________________________________________________
-## Configurer HUE
+## Configuration_HUE
 Vous pouvez configurer le serveur Hue en modifiant le fichier « hue-overrides.ini » dans le répertoire du projet.
 
 ##### Configurer la base de données Hue
@@ -434,7 +434,7 @@ thrift_version=7
 ```
 
 ________________________________________________________________________________________________
-## Configurer Zeppelin
+## Configuration_Zeppelin
 Vous pouvez [configurer](https://zeppelin.apache.org/docs/0.8.0/setup/operation/configuration.html) Zeppelin en modifiant les fichiers `configs/zeppelin-env.sh` et `configs/zeppelin-site.xml`.
 
 ##### Variables d'environnement
@@ -465,7 +465,7 @@ Suivez les étapes ci-dessous :
 3. Faites défiler la page jusqu'à « spark » et cliquez sur « Modifier ».
 
 ________________________________________________________________________________________________
-## Configurer Airflow
+## Configuration_Airflow
 Vous pouvez configurer Airflow en modifiant le fichier « configs/namenode_airflow.cfg » dans le répertoire du projet.
 
 ##### Variables de configuration
@@ -504,7 +504,7 @@ planificateur airflow -D
 > Inutile d'exécuter cette commande au prochain démarrage de votre cluster.
 
 ________________________________________________________________________________________________
-## Configuration de sqoop
+## Configuration_de_Sqoop
 Vous pouvez configurer sqoop en modifiant le fichier `configs/hive_server/sqoop-site.xml` dans le répertoire du projet.
 
 ##### Propriétés Java
