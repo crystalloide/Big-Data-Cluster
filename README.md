@@ -525,7 +525,7 @@ ________________________________________________________________________________
 Un serveur SSH s'exécute sur le conteneur Hive-Server. Vous pouvez le configurer en modifiant le fichier `configs/hive_server/sshd_config.conf` dans le répertoire du projet. Je l'ai configuré pour autoriser l'authentification par mot de passe et la connexion en tant que root.
 
 ________________________________________________________________________________________________
-## Création_images_Docker_personnalisées
+## Création_image_docker_personnalisée
 Vous pouvez personnaliser les images utilisées dans ces fichiers YAML Docker. Le répertoire `docker_image_conf` contient les fichiers Docker pour la création d'images.
 
 ________________________________________________________________________________________________
