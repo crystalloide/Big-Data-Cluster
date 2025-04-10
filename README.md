@@ -59,15 +59,20 @@ Ce projet démarrera un cluster Docker donnant accès aux frameworks/technologie
 ## Exécution du cluster Big Data
 Pour démarrer le cluster, exécutez la commande suivante depuis le répertoire du projet.
 
+##### Sous Linux : clonage du projet : 
+```sh
+cd ~
+rm -Rf Big-Data-Cluster
+git clone https://github.com/crystalloide/Big-Data-Cluster
+cd Big-Data-Cluster
+```
+
 ### Démarrer le cluster de base
 Le cluster de base donne accès à Hadoop, PySpark, Airflow, Flume et Zeppelin. C'est un excellent point de départ si vous souhaitez tester certains de ces outils sans avoir à les installer sur votre ordinateur.
 
 ##### Sous Linux
 ```sh
-cd ~
-git clone https://github.com/crystalloide/Big-Data-Cluster
-cd Big-Data-Cluster
-sudo docker-compose -f basic-hadoop-docker-compose.yaml up
+sudo docker compose -f basic-hadoop-docker-compose.yaml up
 ```
 
 ###### Sous Windows 10
