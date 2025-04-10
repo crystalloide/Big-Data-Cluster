@@ -8,7 +8,7 @@
 5. [Accès à l'écosystème Hadoop](#Accès_écosystème_hadoop)
 6. [Conteneurs exécutés dans le cluster](#containers_en_exécution_dans_le_cluster)
 7. [Accès à HDFS](#Accès_à_HDFS)
-8. [Accès à la base de données Postgres](#Accès_à_la_base_de_données_PostgreSQL)
+8. [Accès à la base de données PostgreSQL](#Accès_à_la_base_de_données_PostgreSQL)
 9. [Accès à Kadmin](#Accès_à_kadmin)
 10. [Exécution de requêtes Hive](#Exécution_de_requêtes_Hive)
 11. [Exécution de PySpark](#Exécution_de_PySpark_en_mode_YARN)
