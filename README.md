@@ -72,7 +72,7 @@ sudo docker-compose -f basic-hadoop-docker-compose.yaml up
 
 ###### Sous Windows 10
 ```sh
-docker-compose -f basic-hadoop-docker-compose.yaml up
+docker compose -f basic-hadoop-docker-compose.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
@@ -81,12 +81,12 @@ Ce fichier démarre le cluster de base, Hive, Hue, Postgres, pgAdmin et Cassandr
 
 ##### Sous Linux
 ```sh
-sudo docker-compose -f hive-sqoop-postgres-cassandra-docker-compose.yaml up
+sudo docker compose -f hive-sqoop-postgres-cassandra-docker-compose.yaml up
 ```
 
 ##### Sous Windows 10
 ```sh
-docker-compose -f hive-sqoop-postgres-cassandra-docker-compose.yaml up
+docker compose -f hive-sqoop-postgres-cassandra-docker-compose.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
@@ -95,12 +95,12 @@ Ce fichier démarre le cluster de base, ZooKeeper, le broker Kafka et le registr
 
 ##### Sous Linux
 ```sh
-sudo docker-compose -f kafka-docker-compose.yaml up
+sudo docker compose -f kafka-docker-compose.yaml up
 ```
 
 ##### Sous Windows 10
 ```sh
-docker-compose -f kafka-docker-compose.yaml up
+docker compose -f kafka-docker-compose.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
@@ -109,12 +109,12 @@ Ce fichier démarre un cluster Kafka. Il est idéal pour démarrer avec Kafka et
 
 ##### Sous Linux
 ```sh
-sudo docker-compose -f kafka-zookeper.yaml up
+sudo docker compose -f kafka-zookeper.yaml up
 ```
 
 ##### Sous Windows 10
 ```sh
-docker-compose -f kafka-zookeper.yaml up
+docker compose -f kafka-zookeper.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
@@ -123,12 +123,12 @@ Ce fichier démarre tous les frameworks/technologies mentionnés [ici](#applicat
 
 ##### Sous Linux
 ```sh
-sudo docker-compose -f all-docker-compose.yaml up
+sudo docker compose -f all-docker-compose.yaml up
 ```
 
 ###### Sous Windows 10
 ```sh
-docker-compose -f all-docker-compose.yaml up
+docker compose -f all-docker-compose.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
