@@ -548,7 +548,3 @@ ________________________________________________________________________________
 2. Installer Docker sur Windows : https://docs.docker.com/desktop/install/windows-install/
 
 ________________________________________________________________________________________________
-[Site web] : https://mrayonline.web.app
-[YouTube] : https://www.youtube.com/@mrugankray7623
-[Linkedin] : https://in.linkedin.com/in/mrugank-ray-543886149
-[buy_me_coffee] : https://www.buymeacoffee.com/mrugankray
