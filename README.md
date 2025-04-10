@@ -1,7 +1,7 @@
 # Salut 👋
 
 ## Table des matières
-1. [Présentation](#aperçu)
+1. [Présentation](#Aperçu)
 2. [Applications](#applications)
 3. [Exécution d'un cluster Big Data](#running-big-data-cluster)
 4. [Accès aux conteneurs Docker](#access-docker-containers)
@@ -30,7 +30,7 @@
 27. [Gérer les ressources](#manage-resources)
 28. [Dépendances](#dependencies)
 
-## Présentation
+## Apercu
 Aujourd'hui, de nombreux projets ont été créés pour déployer un cluster Spark ou Hadoop, mais ils sont soit inefficaces, soit gourmands en ressources, ce qui entraîne des blocages du système.
 Ce dépôt a été créé pour simplifier le déploiement de ces clusters sur une machine locale à l'aide de conteneurs Docker.
 
