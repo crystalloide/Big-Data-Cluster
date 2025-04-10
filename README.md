@@ -331,7 +331,7 @@ Vous pouvez créer un producteur simple ou un producteur avro avec Kadmin.
 
 ________________________________________________________________________________________________
 ## Consommateur_Kafka
-Vous pouvez créer un consommateur kakfka depuis l'interface de ligne de commande ou avec KAdmin.
+Vous pouvez créer un consommateur kafka depuis l'interface de ligne de commande ou avec KAdmin.
 
 ### CLI
 ##### Utilisation du conteneur kafka-broker
