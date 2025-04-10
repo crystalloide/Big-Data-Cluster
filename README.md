@@ -64,6 +64,9 @@ Le cluster de base donne accès à Hadoop, PySpark, Airflow, Flume et Zeppelin. 
 
 ##### Sous Linux
 ```sh
+cd ~
+git clone https://github.com/crystalloide/Big-Data-Cluster
+cd Big-Data-Cluster
 sudo docker-compose -f basic-hadoop-docker-compose.yaml up
 ```
 
