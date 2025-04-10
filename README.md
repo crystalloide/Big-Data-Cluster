@@ -14,21 +14,21 @@
 11. [Exécution de PySpark](#Exécution_de_PySpark_en_mode_YARN)
 12. [Exécution de sqoop](#run-sqoop)
 13. [Exécution d'airflow](#run-airflow)
-14. [Création d'un topic Kafka](#create-kafka-topic)
-15. [Créer un producteur Kafka](#create-kafka-producer)
-16. [Créer un consommateur Kafka](#create-kafka-consumer)
-17. [Exécuter les agents Flume](#run-flume-agents)
-18. [Exécuter les requêtes dans Cassandra](#run-queries-in-cassandra)
-19. [Jars disponibles](#available-jars)
-20. [Configurer Hadoop](#configure-hadoop)
-21. [Configurer Hue](#configure-hue)
-22. [Configurer Zeppelin](#configure-zeppelin)
-23. [Configurer Airflow](#configure-airflow)
-24. [Configurer Sqoop](#configure-sqoop)
-25. [Configurer le serveur SSH](#configure-ssh-server)
-26. [Créer un Docker personnalisé Images](#build-custom-docker-images)
-27. [Gérer les ressources](#manage-resources)
-28. [Dépendances](#dependencies)
+14. [Création d'un topic Kafka](#Création_topic_kafka)
+15. [Producteur Kafka](#Création-producer_kafka)
+16. [Consommateur Kafka](#Création_consumer_kafka)
+17. [Lancement_agents_Flume](#Lancement_agents_Flume)
+18. [Exécution_requêtes_Cassandra](#Exécution_requêtes_Cassandra)
+19. [Jars_disponibles](#Jars_disponibles)
+20. [Configuration_Hadoop](#configuration-hadoop)
+21. [Configuration_Hue](#configuration-hue)
+22. [Configuration_Zeppelin](#configuration-zeppelin)
+23. [Configuration_Airflow](#configuration-airflow)
+24. [Configuration_Sqoop](#configuration-sqoop)
+25. [Configuration_serveur_SSH](#configuration-ssh-server)
+26. [Création_image_docker_personnalisée](#Création_image_docker_personnalisée)
+27. [Gestion_des_ressources](#Gestion_des_ressources)
+28. [Dépendances](#Dépendances)
 
 ## Présentation
 Aujourd'hui, de nombreux projets ont été créés pour déployer un cluster Spark ou Hadoop, mais ils sont soit inefficaces, soit gourmands en ressources, ce qui entraîne des blocages du système.
@@ -206,13 +206,13 @@ ________________________________________________________________________________
 Vous pouvez accéder au serveur PostgreSQL via pgAdmin. Vous pouvez également exécuter des requêtes SQL.
 
 ##### Identifiants Postgres
-- utilisateur : externe
-- mot de passe : externe
-- base de données : externe
+- utilisateur : external
+- mot de passe : external
+- base de données : external
 
 ##### Identifiants pgAdmin
 - e-mail : pgadmin@xyz.com
-- mot de passe : externe
+- mot de passe : external
 
 ________________________________________________________________________________________________
 ## Accès_à_kadmin
@@ -300,11 +300,11 @@ Pour créer une rubrique Kafka via l'interface de ligne de commande (CLI), accé
 kafka-topics --bootstrap-server kafka-broker:29092 --create --topic <topic-name> --partitions <int> --replication-factor <int>
 ```
 
-##### Centre de contrôle Kafka
+##### ControlCenter_Kafka
 Il s'agit d'une interface utilisateur fournie par Confluent. Pour y accéder, consultez la section [Accéder à l'écosystème Hadoop](#access-hadoop-ecosystem).
 
 ________________________________________________________________________________________________
-## Créer un producteur Kafka
+## Lancement_producteur_Kafka
 Vous pouvez créer un producteur Kafka depuis l'interface de ligne de commande (CLI) ou le centre de contrôle Kafka.
 
 #### CLI
