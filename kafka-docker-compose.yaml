@@ -1,5 +1,3 @@
-version: "3"
-
 services:
 # Setting Up HDFS & YARN #
   namenode:
