@@ -5,16 +5,16 @@
 2. [Applications](#applications)
 3. [Exécution d'un cluster Big Data](#Exécution_cluster_Big_Data)
 4. [Accès aux conteneurs Docker](#Accès_aux_conteneurs_Docker)
-5. [Accès à l'écosystème Hadoop](#Accès_à_l'écosystème_hadoop)
-6. [Conteneurs exécutés dans le cluster](#containers-running-in-the-cluster)
-7. [Accès à HDFS](#access-hdfs)
-8. [Accès à la base de données Postgres](#access-postgres-db)
-9. [Accès à Kadmin](#access-kadmin)
-10. [Exécution de requêtes Hive](#run-hive-queries)
-11. [Exécution de PySpark](#run-pyspark)
+5. [Accès à l'écosystème Hadoop](#Accès_écosystème_hadoop)
+6. [Conteneurs exécutés dans le cluster](#containers_en_exécution_dans_le_cluster)
+7. [Accès à HDFS](#Accès_à_HDFS)
+8. [Accès à la base de données Postgres](#Accès_à_la_base_de_données_PostgreSQL)
+9. [Accès à Kadmin](#Accès_à_kadmin)
+10. [Exécution de requêtes Hive](#Exécution_de_requêtes_Hive)
+11. [Exécution de PySpark](#Exécution_de_PySpark_en_mode_YARN)
 12. [Exécution de sqoop](#run-sqoop)
 13. [Exécution d'airflow](#run-airflow)
-14. [Création d'une rubrique Kafka](#create-kafka-topic)
+14. [Création d'un topic Kafka](#create-kafka-topic)
 15. [Créer un producteur Kafka](#create-kafka-producer)
 16. [Créer un consommateur Kafka](#create-kafka-consumer)
 17. [Exécuter les agents Flume](#run-flume-agents)
@@ -56,6 +56,7 @@ Ce projet démarrera un cluster Docker donnant accès aux frameworks/technologie
 | pgAdmin4 | 6.18 |
 | Cassandra | 4.1.0 |
 
+________________________________________________________________________________________________
 ## Exécution_cluster_Big_Data
 Pour démarrer le cluster, exécutez la commande suivante depuis le répertoire du projet.
 
@@ -109,7 +110,7 @@ docker compose -f kafka-docker-compose.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
-### Démarrer le cluster Kafka
+### Lancement_du_cluster_Kafka
 Ce fichier démarre un cluster Kafka. Il est idéal pour démarrer avec Kafka et le registre de schémas.
 
 ##### Sous Linux
@@ -137,6 +138,7 @@ docker compose -f all-docker-compose.yaml up
 ```
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
+________________________________________________________________________________________________
 ## Accès_aux_conteneurs_Docker
 Vous pouvez accéder à un conteneur ainsi : 
 ```sh
@@ -144,7 +146,8 @@ sudo docker exec -it <nom-conteneur> /bin/bash
 ```
 Remarque : Dans certains cas où cela ne fonctionne pas, remplacez `/bin/bash` par `/bin/sh`
 
-## Accès_à_l'écosystème_hadoop
+________________________________________________________________________________________________
+## Accès_écosystème_hadoop
 Voici la liste des technologies ou frameworks exposés à l'hôte. Vous pouvez y accéder via les URL suivantes :
 |Application | URL |
 |--- |--- |
@@ -167,7 +170,8 @@ Voici la liste des technologies ou frameworks exposés à l'hôte. Vous pouvez y
 | Interface utilisateur Kadmin | http://localhost:8084/kadmin/ |
 | Centre de contrôle Kafka | http://localhost:9021 |
 
-## Conteneurs exécutés dans le cluster
+________________________________________________________________________________________________
+## containers_en_exécution_dans_le_cluster
 Voici la liste des conteneurs exécutés dans le cluster.
 |Nom du conteneur | Frameworks/Technologies installés | Description |
 |--- |--- |--- |
@@ -190,14 +194,16 @@ Voici la liste des conteneurs exécutés dans le cluster.
 | kadmin | Kadmin | Ce conteneur exécute kadmin. Vous pouvez utiliser cette application pour produire et consommer des messages. Elle prend en charge les données au format AVRO. |
 | control-center | Centre de contrôle Confluent | Ce conteneur exécute le centre de contrôle Confluent. Ce centre de contrôle permet de consommer des messages, de consulter l'état du broker et de créer des schémas dans schema-registry. |
 
-## Accès à HDFS
+________________________________________________________________________________________________
+## Accès_à_HDFS
 Vous pouvez accéder à HDFS depuis l'interface utilisateur Hue ou Namenode.
 > Remarque : Hue vous permet d'accéder au contenu des fichiers sur HDFS, mais l'interface utilisateur de Namenode ne le prend pas en charge.
 
 Vous pouvez également accéder à HDFS depuis les conteneurs exécutant Hadoop, tels que Namenode.
 
-## Accès à la base de données Postgres
-Vous pouvez accéder au serveur Postgres via pgAdmin. Vous pouvez également exécuter des requêtes SQL.
+________________________________________________________________________________________________
+## Accès_à_la_base_de_données_PostgreSQL
+Vous pouvez accéder au serveur PostgreSQL via pgAdmin. Vous pouvez également exécuter des requêtes SQL.
 
 ##### Identifiants Postgres
 - utilisateur : externe
@@ -208,14 +214,17 @@ Vous pouvez accéder au serveur Postgres via pgAdmin. Vous pouvez également ex�
 - e-mail : pgadmin@xyz.com
 - mot de passe : externe
 
-## Accès à Kadmin
+________________________________________________________________________________________________
+## Accès_à_kadmin
 Pour y accéder, consultez la section [Accès à l'écosystème Hadoop](#access-hadoop-ecosystem). Vous pouvez créer des producteurs et des consommateurs sur Kadmin. L'hôte Kafka et l'URL du registre de schémas Kafka vous seront demandés avant de créer un producteur ou un consommateur. Vous pouvez définir l'hôte Kafka et l'URL du registre de schémas Kafka sur « kafka-broker:29092 » et « http://schema-registry:8083 » respectivement.
 
-## Exécution de requêtes Hive
+________________________________________________________________________________________________
+## Exécution_de_requêtes_Hive
 Vous pouvez exécuter des requêtes Hive avec Hue.
 Un serveur Thrift est exécuté sur Hiveserver 2. Hue a été configuré pour établir une connexion avec le serveur Thrift, qui exécute vos requêtes Hive.
 
-## Exécution de PySpark
+________________________________________________________________________________________________
+## Exécution_de_PySpark
 Spark est installé dans « namenode ». Vous devez accéder au conteneur Namenode et exécuter la commande « spark-submit » pour exécuter les tâches Spark.
 
 Dans ce cluster, vous pouvez exécuter Spark selon trois modes :
@@ -225,7 +234,7 @@ Dans ce cluster, vous pouvez exécuter Spark selon trois modes :
 | [YARN](https://spark.apache.org/docs/latest/running-on-yarn.html) | spark-submit --master yarn --deploy-mode cluster --archives [chemin_fichier] --queue default [chemin_script_python] |
 | [Autonome](https://spark.apache.org/docs/latest/spark-standalone.html) | spark-submit --master spark://namenode:7077 --deploy-mode cluster [chemin_script_python] |
 
-##### Exécuter PySpark en mode YARN
+##### Exécution_de_PySpark_en_mode_YARN
 Dans ce mode, YARN planifie les tâches Spark. Vous devez créer un fichier compressé contenant tous les packages si vous utilisez des packages externes, tels que pandas.
 
 Exécutez la commande ci-dessous pour créer ce fichier compressé
@@ -244,6 +253,7 @@ La commande ci-dessus crée le fichier `conda_env.tar.gz` dans le répertoire co
 ##### Planifier des tâches PySpark dans Airflow
 Vous pouvez planifier des tâches Spark depuis [Airflow](https://airflow.apache.org/docs/apache-airflow/stable/). Vous avez besoin du [fournisseur Spark](https://airflow.apache.org/docs/apache-airflow-providers-apache-spark/stable/index.html) déjà installé pour planifier des tâches Spark. Pour exécuter des tâches Spark dans un cluster Spark autonome, définissez l'hôte sur « namenode » et le port sur « 7077 » lors de la création d'une connexion Spark dans Airflow.
 
+________________________________________________________________________________________________
 ## Exécuter sqoop
 [Sqoop](https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html) est installé dans le conteneur Hive-server. Vous trouverez ci-dessous un exemple de commande pour importer des données avec sqoop. ```sh
 sqoop import --connect jdbc:postgresql://external_postgres_db/external --username external --password external --table <nom-de-votre-table> --target-dir <répertoire-dans-hdfs> --m 1
@@ -261,6 +271,7 @@ Voici la commande permettant de définir un mot de passe dans un conteneur :
 passwd root
 ```
 
+________________________________________________________________________________________________
 ## Exécution d'Airflow
 Pour planifier des tâches dans Airflow, des DAG doivent être créés.
 Vos scripts DAG doivent être conservés dans le répertoire « /dags » du projet. Vos scripts se synchroniseront automatiquement avec le conteneur et vous pourrez consulter votre DAG via l'interface utilisateur d'Airflow.
@@ -279,6 +290,7 @@ SequentialExecutor utilise SQLite pour stocker les métadonnées. Si vous souhai
 | rôle | Administrateur |
 | e-mail | admin@gmail.com |
 
+________________________________________________________________________________________________
 ## Créer une rubrique Kafka
 Vous pouvez créer une rubrique Kafka depuis l'interface de ligne de commande (CLI) ou le centre de contrôle Kafka. Vous pouvez définir la valeur maximale du facteur de réplication sur 1, car ce cluster n'exécute qu'un seul broker Kafka.
 
@@ -291,6 +303,7 @@ kafka-topics --bootstrap-server kafka-broker:29092 --create --topic <topic-name>
 ##### Centre de contrôle Kafka
 Il s'agit d'une interface utilisateur fournie par Confluent. Pour y accéder, consultez la section [Accéder à l'écosystème Hadoop](#access-hadoop-ecosystem).
 
+________________________________________________________________________________________________
 ## Créer un producteur Kafka
 Vous pouvez créer un producteur Kafka depuis l'interface de ligne de commande (CLI) ou le centre de contrôle Kafka.
 
@@ -340,6 +353,7 @@ kafka-avro-console-consumer \
 ### Kadmin
 Vous pouvez créer un consommateur simple ou un consommateur Avro avec Kadmin.
 
+________________________________________________________________________________________________
 ## Exécution des agents Flume
 [Flume](https://flume.apache.org/FlumeUserGuide.html) est installé dans « namenode ». Pour configurer les agents Flume, vous devez configurer le fichier « flume_config/flume.conf » dans le répertoire du projet. Pour démarrer les agents Flume, accédez à namenode et exécutez la commande ci-dessous.
 ```sh
@@ -349,12 +363,14 @@ La commande ci-dessus exécute Flume dans la console.
 
 Vous pouvez également créer un service Flume et le gérer en tant que tel.
 
+________________________________________________________________________________________________
 ## Exécution de requêtes dans Cassandra
 Accédez au conteneur Cassandra et exécutez la commande ci-dessous pour lancer l'exécution de requêtes CQL.
 ```sh
 cqlsh
 ```
 
+________________________________________________________________________________________________
 ## Jars disponibles
 Voici une liste de fichiers jar supplémentaires disponibles et utilisables dans « spark ».
 Ces fichiers jar se trouvent dans le répertoire `/opt/spark/jars/` du conteneur `namenode`.
@@ -372,6 +388,7 @@ Ces fichiers jar se trouvent dans le répertoire `/opt/spark/jars/` du conteneur
 | org.apache.avro | avro-mapred | avro-mapred-1.11.1.jar | 1.11.1 |
 | org.postgresql | postgresql | postgresql-42.5.0.jar | 42.5.0 |
 
+________________________________________________________________________________________________
 ## Configuration de Hadoop
 Vous pouvez configurer l'allocation de ressources à chaque conteneur en modifiant le fichier « hadoop.env » dans le répertoire du projet.
 
@@ -387,7 +404,8 @@ Vous pouvez configurer l'allocation de ressources à chaque conteneur en modifia
 - MAPRED_CONF_mapreduce_map_memory_mb : Détermine l’allocation mémoire maximale pour un mappeur. Par défaut, elle est fixée à 4 Go. Vous pouvez l’augmenter si vous disposez de ressources supplémentaires.
 - MAPRED_CONF_mapreduce_reduce_memory_mb : Détermine l’allocation mémoire maximale pour un réducteur. Par défaut, elle est fixée à 8 Go. Vous pouvez l’augmenter si vous disposez de ressources supplémentaires.
 
-## Configurer la teinte
+________________________________________________________________________________________________
+## Configurer HUE
 Vous pouvez configurer le serveur Hue en modifiant le fichier « hue-overrides.ini » dans le répertoire du projet.
 
 ##### Configurer la base de données Hue
@@ -415,6 +433,7 @@ hive_server_port=10000
 thrift_version=7
 ```
 
+________________________________________________________________________________________________
 ## Configurer Zeppelin
 Vous pouvez [configurer](https://zeppelin.apache.org/docs/0.8.0/setup/operation/configuration.html) Zeppelin en modifiant les fichiers `configs/zeppelin-env.sh` et `configs/zeppelin-site.xml`.
 
@@ -445,6 +464,7 @@ Suivez les étapes ci-dessous :
 2. Cliquez sur « Interprète ».
 3. Faites défiler la page jusqu'à « spark » et cliquez sur « Modifier ».
 
+________________________________________________________________________________________________
 ## Configurer Airflow
 Vous pouvez configurer Airflow en modifiant le fichier « configs/namenode_airflow.cfg » dans le répertoire du projet.
 
@@ -483,6 +503,7 @@ planificateur airflow -D
 ```
 > Inutile d'exécuter cette commande au prochain démarrage de votre cluster.
 
+________________________________________________________________________________________________
 ## Configuration de sqoop
 Vous pouvez configurer sqoop en modifiant le fichier `configs/hive_server/sqoop-site.xml` dans le répertoire du projet.
 
@@ -497,12 +518,15 @@ J'ai modifié sa configuration par défaut afin qu'elle puisse enregistrer le mo
 </property>
 ```
 
+________________________________________________________________________________________________
 ## Configurer le serveur SSH
 Un serveur SSH s'exécute sur le conteneur Hive-Server. Vous pouvez le configurer en modifiant le fichier `configs/hive_server/sshd_config.conf` dans le répertoire du projet. Je l'ai configuré pour autoriser l'authentification par mot de passe et la connexion en tant que root.
 
+________________________________________________________________________________________________
 ## Créer des images Docker personnalisées
 Vous pouvez personnaliser les images utilisées dans ces fichiers YAML Docker. Le répertoire `docker_image_conf` contient les fichiers Docker pour la création d'images.
 
+________________________________________________________________________________________________
 ## Gérer les ressources
 Je recommande d'utiliser un poste de travail doté d'au moins 4 cœurs hyperthreadés et de 8 Go de RAM pour exécuter ce cluster. De plus, je déconseille d'exécuter d'autres programmes simultanément, car cela pourrait entraîner des pénuries de ressources et d'autres problèmes lors de l'utilisation de certains ports.
 
@@ -515,11 +539,13 @@ Je recommande d'utiliser un poste de travail doté d'au moins 4 cœurs hyperthre
 1. Lorsque vous exécutez votre code PySpark dans Zeppelin, un pilote Spark démarre, ce qui consomme beaucoup de ressources. Je recommande d'exécuter `spark.stop()` et `sc.stop()` dans le bloc suivant de Zeppelin. Cela arrêtera le pilote Spark.
 2. Si le pilote consomme encore des ressources, vous pouvez vous connecter à `namenode` et exécuter `zeppelin-daemon.sh stop`. Cela arrêtera Zeppelin.
 
+________________________________________________________________________________________________
 ## Dépendances
 - [Docker](https://docs.docker.com/) :
 1. Installer Docker sur Ubuntu : https://docs.docker.com/engine/install/ubuntu/
 2. Installer Docker sur Windows : https://docs.docker.com/desktop/install/windows-install/
 
+________________________________________________________________________________________________
 [Site web] : https://mrayonline.web.app
 [YouTube] : https://www.youtube.com/@mrugankray7623
 [Linkedin] : https://in.linkedin.com/in/mrugank-ray-543886149
