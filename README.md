@@ -246,25 +246,46 @@ La commande ci-dessus crée le fichier `conda_env.tar.gz` dans le répertoire co
 
 > REMARQUE : Vous pouvez choisir de ne pas ajouter l'option `--archives` si vous n'utilisez pas de paquets externes.
 
-##### Exécuter PySpark dans Zeppeline
-À des fins de développement, vous pouvez utiliser [Zeppelin](https://zeppelin.apache.org/docs/latest/interpreter/spark.html) pour exécuter des tâches Spark. Sélectionnez l'interpréteur Spark lors de la création d'un script dans Zeppelin. N'oubliez pas d'ajouter `%spark.pyspark` au début du bloc/de la cellule. Conservez votre code Spark dans un seul bloc/une seule cellule.
-> Remarque : Zeppeline est configuré pour exécuter des tâches Spark en mode local.
+##### Exécuter PySpark dans Zeppelin
+À des fins de développement, vous pouvez utiliser [Zeppelin](https://zeppelin.apache.org/docs/latest/interpreter/spark.html) pour exécuter des tâches Spark. 
+
+Sélectionnez l'interpréteur Spark lors de la création d'un script dans Zeppelin. 
+
+N'oubliez pas d'ajouter `%spark.pyspark` au début du bloc/de la cellule. 
+
+Conservez votre code Spark dans un seul bloc/une seule cellule.
+
+> Remarque : Zeppelin est configuré pour exécuter des tâches Spark en mode local.
 
 ##### Planifier des tâches PySpark dans Airflow
-Vous pouvez planifier des tâches Spark depuis [Airflow](https://airflow.apache.org/docs/apache-airflow/stable/). Vous avez besoin du [fournisseur Spark](https://airflow.apache.org/docs/apache-airflow-providers-apache-spark/stable/index.html) déjà installé pour planifier des tâches Spark. Pour exécuter des tâches Spark dans un cluster Spark autonome, définissez l'hôte sur « namenode » et le port sur « 7077 » lors de la création d'une connexion Spark dans Airflow.
+
+Vous pouvez planifier des tâches Spark depuis [Airflow](https://airflow.apache.org/docs/apache-airflow/stable/). 
+
+Vous avez besoin du [fournisseur Spark](https://airflow.apache.org/docs/apache-airflow-providers-apache-spark/stable/index.html) déjà installé pour planifier des tâches Spark. 
+
+Pour exécuter des tâches Spark dans un cluster Spark autonome, définissez l'hôte sur « namenode » et le port sur « 7077 » lors de la création d'une connexion Spark dans Airflow.
 
 ________________________________________________________________________________________________
 ## Exécution_de_Sqoop
-[Sqoop](https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html) est installé dans le conteneur Hive-server. Vous trouverez ci-dessous un exemple de commande pour importer des données avec sqoop. ```sh
+[Sqoop](https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html) est installé dans le conteneur Hive-server. 
+
+Vous trouverez ci-dessous un exemple de commande pour importer des données avec sqoop. 
+
+```sh
 sqoop import --connect jdbc:postgresql://external_postgres_db/external --username external --password external --table <nom-de-votre-table> --target-dir <répertoire-dans-hdfs> --m 1
 ```
+
 Vous pouvez configurer le mappeur selon vos besoins. Étant donné que nous sommes en développement, je suggère d'en utiliser un seul.
 
 Sqoop est configuré pour stocker le mot de passe de la base de données lors de la création de la tâche sqoop. Toutes les métadonnées sont stockées dans le répertoire $HOME/.sqoop.
 
 ##### Planification de tâches Sqoop dans Airflow
+
 Le conteneur Hive-server héberge un serveur SSH.
-[SSHOperator](https://airflow.apache.org/docs/apache-airflow-providers-ssh/stable/_api/airflow/providers/ssh/operators/ssh/index.html) dans Airflow peut être utilisé pour se connecter au serveur Hive et exécuter une tâche Sqoop. Pour vous connecter à Hive-server depuis Airflow, définissez l'hôte sur « hive-server », le nom d'utilisateur sur « root » et le mot de passe sur celui du conteneur lors de la création d'une connexion SSH dans Airflow.
+
+[SSHOperator](https://airflow.apache.org/docs/apache-airflow-providers-ssh/stable/_api/airflow/providers/ssh/operators/ssh/index.html) dans Airflow peut être utilisé pour se connecter au serveur Hive et exécuter une tâche Sqoop. 
+
+Pour vous connecter à Hive-server depuis Airflow, définissez l'hôte sur « hive-server », le nom d'utilisateur sur « root » et le mot de passe sur celui du conteneur lors de la création d'une connexion SSH dans Airflow.
 
 Voici la commande permettant de définir un mot de passe dans un conteneur :
 ```sh
