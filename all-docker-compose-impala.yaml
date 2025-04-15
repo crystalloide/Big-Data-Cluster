@@ -262,7 +262,7 @@ services:
     depends_on:
       - huedb
 
-# Setup external DB & pagadmin
+# Setup external DB & pgadmin
   external_postgres_db:
     image: postgres:15.1-alpine3.17
     container_name: external_postgres_db
@@ -307,30 +307,40 @@ services:
       retries: 10
 
 ## Ajout du service Impala ##
-impala:
-  image: apache/impala:4.3.0
-  container_name: impala
-  hostname: impala
-  restart: always
-  ports:
-    - "25000:25000"  # Interface web Impala
-    - "21000:21000"  # Port Beeswax (JDBC)
-    - "21050:21050"  # Port HS2 HTTP
-  environment:
-    - IMPALA_CATALOG_SERVICE_HOST=impala
-    - IMPALA_STATE_STORE_HOST=impala
-    - HIVE_METASTORE_URI=thrift://hive-metastore:9083
-    - NAMENODE_URI=hdfs://namenode:9000
-  volumes:
-    - ./configs/impala:/etc/impala/conf
-    - hadoop_namenode:/hadoop/dfs/name
-  depends_on:
-    - hive-metastore
-    - hive-server
-    - namenode
-    - datanode
-#  networks:
-#    - default
+  impala:
+#    image: docker.io/apache/impala:4.5.0-impala_quickstart_hms
+    image: apache/kudu:impala-latest
+    container_name: impala
+    hostname: impala
+    restart: always
+    ports:
+      - "25000:25000"  # Interface web Impala
+      - "21000:21000"  # Port Beeswax (JDBC)
+      - "21050:21050"  # Port HS2 HTTP
+      - "25010:25010"
+      - "25020:25020"
+    environment:
+      - IMPALA_CATALOG_SERVICE_HOST=impala
+      - IMPALA_STATE_STORE_HOST=impala
+      - HIVE_METASTORE_URI=thrift://hive-metastore:9083
+      - NAMENODE_URI=hdfs://namenode:9000
+      - POSTGRES_USER=external
+      - POSTGRES_PASSWORD=external
+      - POSTGRES_PASSWORD=external
+      - POSTGRES_DB=external
+    env_file:
+      - ./hadoop.env
+    volumes:
+      - ./configs/impala:/etc/impala/conf
+      - hadoop_namenode:/hadoop/dfs/name
+    depends_on:
+      - hive-metastore
+      - hive-server
+      - namenode
+      - datanode
+    command: [ "impala" ]
+#    networks:
+#      - default
 
 volumes:
   hadoop_namenode:
