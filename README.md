@@ -553,7 +553,7 @@ docker exec -it impala bash
 impala-shell
 
 -- Affichage : 
-
+```sh
 Starting Impala Shell without Kerberos authentication
 Opened TCP connection to impala:21000
 Connected to impala:21000
@@ -595,7 +595,7 @@ Query: describe DATABASE DEFAULT
 +---------+--------------------------------+-----------------------+
 Fetched 1 row(s) in 0.08s
 [impala:21000] default>
-
+```
 
 ________________________________________________________________________________________________
 ## Configuration_du_serveur_SSH
