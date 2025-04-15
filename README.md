@@ -25,10 +25,11 @@
 22. [Configuration_Zeppelin](#configuration_Zeppelin)
 23. [Configuration_Airflow](#configuration_Airflow)
 24. [Configuration_de_Sqoop](#configuration_de_Sqoop)
-25. [Configuration_du_serveur_SSH](#configuration_du_serveur_SSH)
-26. [Création_image_docker_personnalisée](#Création_image_docker_personnalisée)
-27. [Gestion_des_ressources](#Gestion_des_ressources)
-28. [Dépendances](#Dépendances)
+25. [Configuration_Impala](#configuration_Impala)
+26. [Configuration_du_serveur_SSH](#configuration_du_serveur_SSH)
+27. [Création_image_docker_personnalisée](#Création_image_docker_personnalisée)
+28. [Gestion_des_ressources](#Gestion_des_ressources)
+29. [Dépendances](#Dépendances)
 
 ## Présentation
 Aujourd'hui, de nombreux projets ont été créés pour déployer un cluster Spark ou Hadoop, mais ils sont soit inefficaces, soit gourmands en ressources, ce qui entraîne des blocages du système.
@@ -540,6 +541,61 @@ J'ai modifié sa configuration par défaut afin qu'elle puisse enregistrer le mo
 </description>
 </property>
 ```
+
+________________________________________________________________________________________________
+## Configuration_Impala
+
+Pour se connecter en client à impala : 
+```sh
+docker exec -it impala bash
+```
+
+impala-shell
+
+-- Affichage : 
+
+Starting Impala Shell without Kerberos authentication
+Opened TCP connection to impala:21000
+Connected to impala:21000
+Server version: impalad version 3.4.0-RELEASE RELEASE (build Could not obtain git hash)
+***********************************************************************************
+Welcome to the Impala shell.
+(Impala Shell v3.4.0-RELEASE (9f1c31c) built on Fri Apr 24 14:10:19 PDT 2020)
+
+Press TAB twice to see a list of available commands.
+***********************************************************************************
+
+[impala:21000] default> 
+
+Documented commands (type help <topic>):
+========================================
+compute  exit     help     profile  rerun   set    show  unset  values   with
+connect  explain  history  quit     select  shell  tip   use    version
+
+Undocumented commands:
+======================
+alter   delete  describe  insert  source  summary  upsert
+create  desc    drop      load    src     update
+
+[impala:21000] default> connect impala ;
+
+
+Opened TCP connection to impala:21000
+Connected to impala:21000
+Server version: impalad version 3.4.0-RELEASE RELEASE (build Could not obtain git hash)
+
+
+[impala:21000] default> describe DATABASE DEFAULT;
+
+Query: describe DATABASE DEFAULT
++---------+--------------------------------+-----------------------+
+| name    | location                       | comment               |
++---------+--------------------------------+-----------------------+
+| default | file:/var/lib/impala/warehouse | Default Hive database |
++---------+--------------------------------+-----------------------+
+Fetched 1 row(s) in 0.08s
+[impala:21000] default>
+
 
 ________________________________________________________________________________________________
 ## Configuration_du_serveur_SSH
