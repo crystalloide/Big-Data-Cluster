@@ -170,6 +170,7 @@ Voici la liste des technologies ou frameworks exposés à l'hôte. Vous pouvez y
 | Registre de schémas | http://localhost:8083 |
 | Interface utilisateur Kadmin | http://localhost:8084/kadmin/ |
 | Centre de contrôle Kafka | http://localhost:9021 |
+| Impala UI | http://localhost:25000 |
 
 ________________________________________________________________________________________________
 ## containers_en_exécution_dans_le_cluster
