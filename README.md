@@ -46,6 +46,7 @@ Ce projet démarrera un cluster Docker donnant accès aux frameworks/technologie
 | Airflow | 2.3.3 |
 | Zeppelin | 0.10.1 |
 | Hive | 2.3.2 |
+| Impala | 4.1.0 |
 | Hue | 4.6.0 |
 | Sqoop | 1.4.7 |
 | Confluent Kafka | 5.4.0-ce |
