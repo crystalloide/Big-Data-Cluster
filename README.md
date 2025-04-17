@@ -59,7 +59,7 @@ Ce projet démarrera un cluster Docker donnant accès aux frameworks/technologie
 
 ________________________________________________________________________________________________
 ## Exécution_cluster_Big_Data
-Pour démarrer le cluster, exécutez la commande suivante depuis le répertoire du projet.
+Pour démarrer le cluster, exécutez les commandes suivantes depuis le répertoire du projet :
 
 ##### Sous Linux : clonage du projet : 
 ```sh
@@ -67,6 +67,33 @@ cd ~
 rm -Rf Big-Data-Cluster
 git clone https://github.com/crystalloide/Big-Data-Cluster
 cd Big-Data-Cluster
+```
+
+### Démarrer le cluster complet avec : 
+Ce fichier démarre tous les frameworks/technologies mentionnés : 
+
+| Interface utilisateur Namenode | http://localhost:9870/dfshealth.html#tab-overview |
+| Namenode (port IPC) | http://localhost:9000 |
+| Serveur d'historique | http://localhost:8188/applicationhistory |
+| Datanode | http://localhost:9864/ |
+| Gestionnaire de nœuds | http://localhost:8042/node |
+| Gestionnaire de ressources | http://localhost:8088/ |
+| Hue | http://localhost:8888 |
+| Interface utilisateur Spark Master | http://localhost:8080 |
+| Interface utilisateur Spark Slave | http://localhost:8081 |
+| Interface utilisateur Spark Driver | http://localhost:4040 (accessible uniquement après le démarrage d'un pilote) |
+| Interface utilisateur Zeppelin | http://localhost:8082 |
+| Interface utilisateur Airflow | http://localhost:3000 |
+| Interface utilisateur pgAdmin | http://localhost:5000 |
+| Zookeeper | http://localhost:2181 |
+| Broker Kafka | http://localhost:9092 |
+| Registre de schémas | http://localhost:8083 |
+| Interface utilisateur Kadmin | http://localhost:8084/kadmin/ |
+| Centre de contrôle Kafka | http://localhost:9021 |
+| Impala UI | http://localhost:25000 |
+
+```sh
+sudo docker compose -f all-docker-compose-impala.yaml up d-
 ```
 
 ### Démarrer le cluster de base
@@ -126,7 +153,7 @@ docker compose -f kafka-zookeper.yaml up
 > Remarque : Vous devez installer WSL 2 sous Windows pour exécuter ce cluster.
 
 ### Démarrer le cluster complet
-Ce fichier démarre tous les frameworks/technologies mentionnés [ici](#applications).
+Ce fichier démarre tous les frameworks/technologies mentionnés [ici](#applications) sauf impala
 
 ##### Sous Linux
 ```sh
