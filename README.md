@@ -94,6 +94,7 @@ Ce fichier démarre tous les frameworks/technologies mentionnés :
 | Centre de contrôle Kafka | http://localhost:9021 |
 | Impala UI | http://localhost:25000 |
 
+### Démarrer le cluster complet (avec Imapala)
 ```sh
 sudo docker compose -f all-docker-compose-impala.yaml up -d
 ```
