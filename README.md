@@ -339,8 +339,8 @@ SequentialExecutor utilise SQLite pour stocker les métadonnées. Si vous souhai
 | nom d'utilisateur | admin |
 | mot de passe | admin |
 | prénom | admin |
-| nom | administrateur |
-| rôle | Administrateur |
+| nom | admin |
+| rôle | Admin |
 | e-mail | admin@gmail.com |
 
 ________________________________________________________________________________________________
@@ -451,11 +451,11 @@ Vous pouvez configurer l'allocation de ressources à chaque conteneur en modifia
 - YARN_CONF_yarn_scheduler_capacity_root_default_maximum___allocation___mb : Détermine l'allocation mémoire maximale au planificateur YARN. Par défaut, la valeur est de 8 Go. Vous pouvez l'augmenter si vous disposez de ressources supplémentaires.
 - YARN_CONF_yarn_scheduler_capacity_root_default_maximum___allocation___vcores : Détermine le nombre maximal de cœurs alloués au planificateur YARN. Par défaut, la valeur est de 4 cœurs. Vous pouvez l'augmenter si vous disposez de ressources supplémentaires.
 
-##### Configurer le gestionnaire de nœuds
+##### Configuration du nodemanager
 - YARN_CONF_yarn_nodemanager_resource_memory___mb : Détermine l'allocation mémoire maximale au gestionnaire de nœuds. Par défaut, la valeur est de 16 Go. Il est conseillé de ne pas la diminuer, sinon les tâches de réduction de la carte pourraient se bloquer en raison d'une indisponibilité des ressources.
 - YARN_CONF_yarn_nodemanager_resource_cpu___vcores : Détermine le nombre maximal de cœurs alloués au gestionnaire de nœuds. Par défaut, la valeur est de 8 cœurs. Il est conseillé de ne pas la diminuer.
 
-##### Configurer la réduction de la carte
+##### Configuration de Map Reduce
 - MAPRED_CONF_mapreduce_map_memory_mb : Détermine l’allocation mémoire maximale pour un mappeur. Par défaut, elle est fixée à 4 Go. Vous pouvez l’augmenter si vous disposez de ressources supplémentaires.
 - MAPRED_CONF_mapreduce_reduce_memory_mb : Détermine l’allocation mémoire maximale pour un réducteur. Par défaut, elle est fixée à 8 Go. Vous pouvez l’augmenter si vous disposez de ressources supplémentaires.
 
@@ -464,7 +464,8 @@ ________________________________________________________________________________
 Vous pouvez configurer le serveur Hue en modifiant le fichier « hue-overrides.ini » dans le répertoire du projet.
 
 ##### Configurer la base de données Hue
-Hue est configuré pour utiliser Postgres dans le conteneur « huedb ». La configuration par défaut est la suivante : ```sh
+Hue est configuré pour utiliser Postgres dans le conteneur « huedb ». La configuration par défaut est la suivante : 
+```sh
 engine=postgresql_psycopg2
 host=huedb
 port=5432
@@ -500,7 +501,8 @@ Vous trouverez ci-dessous les variables définies dans `zeppelin-env.sh`, utilis
 | SPARK_MASTER | spark://namenode:7077 |
 | ZEPPELIN_PORT | 8082 |
 | SPARK_HOME | /opt/spark |
-| HADOOP_CONF_DIR | /etc/hadoop | | PYSPARK_PYTHON | /root/anaconda/bin/python3.9 |
+| HADOOP_CONF_DIR | /etc/hadoop | 
+| PYSPARK_PYTHON | /root/anaconda/bin/python3.9 |
 | PYTHONPATH | /root/anaconda/bin/python3.9 |
 
 ##### Propriétés Java
@@ -533,7 +535,7 @@ Voici les variables que j'ai configurées. Vous pouvez laisser les autres variab
 
 Vous pouvez utiliser d'autres exécuteurs, tels que « LocalExecutor ». Pour utiliser cet exécuteur, vous devez créer une instance de base de données sur un serveur de base de données. Vous pouvez utiliser le conteneur « external_postgres_db ». Une fois la base de données créée, définissez sql_alchemy_conn sur postgresql+psycopg2://<username>:<password>@[IP/container-name]:5432/[db-name] et exécuteur sur LocalExecutor.
 
-##### Recharger Airflow
+##### Rechargement d'Airflow
 Après avoir configuré les variables, vous devez initialiser une nouvelle instance de base de données et redémarrer le serveur Airflow et le planificateur.
 
 Connectez-vous à `namenode` en exécutant cette [commande](#access-docker-containers) et exécutez la commande ci-dessous pour initialiser une base de données.
@@ -548,13 +550,13 @@ airflow users create \
 --email admin@gmail.com
 ```
 
-Exécutez la commande ci-dessous pour redémarrer le serveur Airflow et le planificateur.
+Exécutez la commande ci-dessous pour redémarrer le serveur Airflow et le scheduler (planificateur).
 ```sh
 rm -rf ~/airflow/airflow-scheduler.pid && \
 rm -rf ~/airflow/airflow-webserver-monitor.pid && \
 rm -rf ~/airflow/airflow-webserver.pid && \
-serveur web airflow -p 3000 -D --workers 1 && \
-planificateur airflow -D
+airflow webserver -p 3000 -D --workers 1 && \
+airflow scheduler -D
 ```
 > Inutile d'exécuter cette commande au prochain démarrage de votre cluster.
 
