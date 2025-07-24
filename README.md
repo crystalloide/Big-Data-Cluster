@@ -71,7 +71,7 @@ cd Big-Data-Cluster
 ```
 
 ### Démarrer le cluster complet avec : 
-Ce fichier démarre tous les frameworks/technologies mentionnés : 
+Le fichier all-docker-compose-impala.yaml démarre tous les frameworks/technologies mentionnés : 
 |Framework/Technology | Version |
 |--- |--- |
 | Interface utilisateur Namenode | http://localhost:9870/dfshealth.html#tab-overview |
@@ -97,6 +97,11 @@ Ce fichier démarre tous les frameworks/technologies mentionnés :
 ### Démarrer le cluster complet (avec Impala)
 ```sh
 sudo docker compose -f all-docker-compose-impala.yaml up -d
+```
+
+### Démarrer un cluster allégé (HDFS/YARN/MR/ZOOKEEPER/HIVE/HUE/IMPALA/FLUME/SPARK/ZEPPELIN/AIRFLOW/POSTGRESQL/PGADMIN) : 
+```sh
+sudo docker compose -f light-docker-compose-impala.yaml -d
 ```
 
 ### Démarrer le cluster de base
