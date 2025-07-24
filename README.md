@@ -101,7 +101,7 @@ sudo docker compose -f all-docker-compose-impala.yaml up -d
 
 ### Démarrer un cluster allégé (HDFS/YARN/MR/ZOOKEEPER/HIVE/HUE/IMPALA/FLUME/SPARK/ZEPPELIN/AIRFLOW/POSTGRESQL/PGADMIN) : 
 ```sh
-sudo docker compose -f light-docker-compose-impala.yaml -d
+sudo docker compose -f light-docker-compose-impala.yaml up -d
 ```
 
 ### Démarrer le cluster de base
