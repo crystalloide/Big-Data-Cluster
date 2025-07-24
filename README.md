@@ -104,22 +104,22 @@ sudo docker compose -f all-docker-compose-impala.yaml up -d
 sudo docker compose -f light-docker-compose-impala.yaml up -d
 ```
 ## Les URLs suivantes donneront accès à l'écosystème allégé suivant :
-```sh
-	Application	:			URL :
-
-	Interface utilisateur Namenode		http://localhost:9870/dfshealth.html#tab-overview
-	Serveur d'historique			http://localhost:8188/applicationhistory
-	Datanode				http://localhost:9864/
-	Gestionnaire de nœuds			http://localhost:8042/node
-	Gestionnaire de ressources		http://localhost:8088/
-	Hue					http://localhost:8888
-	Interface utilisateur Spark Master	http://localhost:8080
-	Interface utilisateur Spark Slave	http://localhost:8081
-	Interface utilisateur Spark Driver	http://localhost:4040 (accessible uniquement après le démarrage d'un driver)
-	Interface utilisateur Zeppelin		http://localhost:8082
-	Interface utilisateur Airflow		http://localhost:3000
-	Interface utilisateur pgAdmin		http://localhost:5000
-	Impala UI				http://localhost:25000
+|--- |--- |
+|	Application	:			| URL :|
+|
+|	Interface utilisateur Namenode		| http://localhost:9870/dfshealth.html#tab-overview |
+|	Serveur d'historique			| http://localhost:8188/applicationhistory |
+|	Datanode				| http://localhost:9864/ |
+|	Gestionnaire de nœuds			| http://localhost:8042/node |
+|	Gestionnaire de ressources		| http://localhost:8088/ |
+|	Hue					| http://localhost:8888 |
+|	Interface utilisateur Spark Master	| http://localhost:8080 |
+|	Interface utilisateur Spark Slave	| http://localhost:8081 |
+|	Interface utilisateur Spark Driver	| http://localhost:4040 (accessible uniquement après le démarrage d'un driver) |
+|	Interface utilisateur Zeppelin		| http://localhost:8082 |
+|	Interface utilisateur Airflow		| http://localhost:3000 |
+|	Interface utilisateur pgAdmin		| http://localhost:5000 |
+|	Impala UI				| http://localhost:25000 |
   Remarque : zookeeper est lancé
 ```sh
 
