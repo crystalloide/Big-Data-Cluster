@@ -122,7 +122,7 @@ services:
       - ./hadoop.env
     volumes:
       - hadoop_hive_server_sqoop:/usr/lib/sqoop
-      - ./configs/hive_server/sqoop-env.sh:/usr/lib/sqoop/conf/sqoop-env.sh
+      - ./configs/hive_server/sqoop-env.sh:/usr/lib/sqloop/conf/sqoop-env.sh
       - ./configs/hive_server/hive_server_bashrc.txt:/root/.bashrc
       - ./configs/hive_server/sqoop-site.xml:/usr/lib/sqoop/conf/sqoop-site.xml
       - ./configs/hive_server/sshd_config.conf:/etc/ssh/sshd_config
@@ -234,6 +234,91 @@ services:
       - datanode
     command: [ "impala" ]
 
+# Environnement Apache Oozie #
+  oozie:
+    image: equemuelcompellon/hadoop-oozie:latest
+    container_name: oozie
+    hostname: oozie
+    restart: always
+    ports:
+      - "11000:11000"  # Oozie Web Console
+      - "11001:11001"  # Administration Oozie
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088 hive-metastore:9083"
+      OOZIE_HTTP_HOSTNAME: oozie
+      OOZIE_HTTP_PORT: 11000
+      OOZIE_BASE_URL: http://oozie:11000/oozie
+      # Hadoop configuration
+      FS_defaultFS: hdfs://namenode:9000
+      FS_DEFAULTFS: hdfs://namenode:9000
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      YARN_CONF_yarn_resourcemanager_hostname: resourcemanager
+      YARN_CONF_yarn_resourcemanager_address: resourcemanager:8032
+      YARN_CONF_yarn_resourcemanager_scheduler_address: resourcemanager:8030
+      YARN_CONF_yarn_resourcemanager_resource__tracker_address: resourcemanager:8031
+      # Database configuration (using external PostgreSQL)
+      OOZIE_DB_TYPE: postgres
+      OOZIE_DB_HOST: external_postgres_db
+      OOZIE_DB_PORT: 5432
+      OOZIE_DB_NAME: oozie
+      OOZIE_DB_USER: oozie
+      OOZIE_DB_PASSWORD: oozie
+    env_file:
+      - ./hadoop.env
+    volumes:
+      - oozie_data:/opt/oozie/data
+      - ./configs/oozie:/opt/oozie/conf
+      - ./oozie-workflows:/opt/oozie/workflows  # Mount for workflow definitions
+      - hadoop_namenode:/hadoop/dfs/name:ro
+    depends_on:
+      - namenode
+      - datanode
+      - resourcemanager
+      - nodemanager
+      - historyserver
+      - hive-metastore
+      - external_postgres_db
+    command: >
+      bash -c "
+        # Wait for dependencies to be ready
+        #/wait-for-it.sh namenode:9000 --timeout=300 --strict -- 
+        #/wait-for-it.sh resourcemanager:8088 --timeout=300 --strict --
+        #/wait-for-it.sh external_postgres_db:5432 --timeout=300 --strict --
+        #while ! nc -z namenode 9000; do sleep 2; done
+        #while ! nc -z resourcemanager 8088; do sleep 2; done
+        #while ! nc -z external_postgres_db 5432; do sleep 2; done
+        sleep 60
+        # Initialize Oozie database if needed
+        /opt/oozie-4.2.0/bin/ooziedb.sh create -run &&
+        # Start Oozie server
+        /opt/oozie-4.2.0/bin/oozied.sh run
+      "
+
+  # Database initialization for Oozie
+  oozie-db-init:
+    image: postgres:15.1-alpine3.17
+    container_name: oozie-db-init
+    environment:
+      POSTGRES_USER: external
+      POSTGRES_PASSWORD: external
+      PGPASSWORD: external
+    volumes:
+      - ./configs/oozie/init-oozie-db.sql:/docker-entrypoint-initdb.d/init-oozie-db.sql
+    depends_on:
+      - external_postgres_db
+    command: >
+      sh -c "
+        until pg_isready -h external_postgres_db -p 5432 -U external; do
+          echo 'Waiting for PostgreSQL to be ready...'
+          sleep 2
+        done
+        echo 'PostgreSQL is ready, creating Oozie database and user...'
+        psql -h external_postgres_db -U external -d external -c \"CREATE DATABASE oozie;\" || true
+        psql -h external_postgres_db -U external -d external -c \"CREATE USER oozie WITH PASSWORD 'oozie';\" || true
+        psql -h external_postgres_db -U external -d external -c \"GRANT ALL PRIVILEGES ON DATABASE oozie TO oozie;\" || true
+        echo 'Oozie database initialization completed'
+      "
+
 volumes:
   hadoop_namenode:
   hadoop_namenode_conda:
@@ -251,3 +336,4 @@ volumes:
   airflow_namenode:
   zookeeper_data:
   zookeeper_log:
+  oozie_data:
