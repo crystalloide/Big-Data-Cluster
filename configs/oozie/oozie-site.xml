@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Oozie Server Configuration -->
+    <property>
+        <name>oozie.base.url</name>
+        <value>http://oozie:11000/oozie</value>
+    </property>
+    
+    <property>
+        <name>oozie.system.id</name>
+        <value>oozie-hadoop-learning</value>
+    </property>
+    
+    <!-- Database Configuration -->
+    <property>
+        <name>oozie.service.JPAService.jdbc.driver</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+    
+    <property>
+        <name>oozie.service.JPAService.jdbc.url</name>
+        <value>jdbc:postgresql://external_postgres_db:5432/oozie</value>
+    </property>
+    
+    <property>
+        <name>oozie.service.JPAService.jdbc.username</name>
+        <value>oozie</value>
+    </property>
+    
+    <property>
+        <name>oozie.service.JPAService.jdbc.password</name>
+        <value>oozie</value>
+    </property>
+    
+    <!-- Hadoop Configuration -->
+    <property>
+        <name>oozie.service.HadoopAccessorService.hadoop.configurations</name>
+        <value>*=/opt/oozie/conf</value>
+    </property>
+    
+    <property>
+        <name>oozie.service.WorkflowAppService.system.libpath</name>
+        <value>/user/oozie/share/lib</value>
+    </property>
+    
+    <!-- Authentication -->
+    <property>
+        <name>oozie.authentication.type</name>
+        <value>simple</value>
+    </property>
+</configuration>
