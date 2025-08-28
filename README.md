@@ -72,7 +72,8 @@ cd Big-Data-Cluster
 
 ### Démarrer le cluster complet avec : 
 Ce fichier démarre tous les frameworks/technologies mentionnés : 
-
+|Application | URL |
+|--- |--- |
 | Interface utilisateur Namenode | http://localhost:9870/dfshealth.html#tab-overview |
 | Namenode (port IPC) | http://localhost:9000 |
 | Serveur d'historique | http://localhost:8188/applicationhistory |
