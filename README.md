@@ -98,6 +98,14 @@ Ce fichier démarre tous les frameworks/technologies mentionnés :
 sudo docker compose -f all-docker-compose-impala.yaml up -d
 ```
 
+### Démarrer le cluster avec les composants principaux : HDFS MR SPARK HIVE PIG SQOOP ZEPPELIN HUE IMPALA OOZIE AIRFLOW ZOOKEEPER POSTGRESQL
+Ce fichier démarre le cluster de base, Hive, Hue, Postgres, pgAdmin et Cassandra. Il est idéal pour créer des pipelines de traitement par lots.
+
+##### Sous Linux
+```sh
+sudo docker compose -f light-docker-compose-impala-oozie.yaml up -d
+```
+
 ### Démarrer le cluster de base
 Le cluster de base donne accès à Hadoop, PySpark, Airflow, Flume et Zeppelin. C'est un excellent point de départ si vous souhaitez tester certains de ces outils sans avoir à les installer sur votre ordinateur.
 
