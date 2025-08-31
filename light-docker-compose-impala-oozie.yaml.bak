@@ -2,18 +2,15 @@ services:
 # Environnement hadoop #
   namenode:
     image: mrugankray/namenode-spark-airflow-flume-zepplin:1.1
-    hostname: namenode    
     container_name: namenode
     restart: always
     ports:
-      - 9870:9870 # webhdfs
-      - 9000:9000 # namenode uri
+      - 9870:9870
+      - 9000:9000
       - 8082:8082 # zeppelin ui
       - 8080:8080 # spark master web ui
-      - 8998:8998 # spark master livy
       - 8081:8081 # spark slave web ui
       - 4040:4040 # spark driver web ui
-      - 18088:18088 # spark history server
       - 3000:3000 # airflow ui
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
@@ -32,12 +29,15 @@ services:
     environment:
       - CLUSTER_NAME=hadoop-learning
       - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - POSTGRES_USER=external
+      - POSTGRES_PASSWORD=external
+      - POSTGRES_PASSWORD=external
+      - POSTGRES_DB=external
     env_file:
       - ./hadoop.env
 
   datanode:
     image: mrugankray/datanode-python:1.0
-    hostname: datanode
     container_name: datanode
     restart: always
     volumes:
@@ -54,7 +54,6 @@ services:
 
   resourcemanager:
     image: mrugankray/resourcemanager-python:1.0
-    hostname: resourcemanager
     container_name: resourcemanager
     restart: always
     volumes:
@@ -69,7 +68,6 @@ services:
 
   nodemanager:
     image: mrugankray/nodemanager-python:1.0
-    hostname: nodemanager
     container_name: nodemanager
     restart: always
     volumes:
@@ -85,7 +83,6 @@ services:
 
   historyserver:
     image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
-    hostname: historyserver
     container_name: historyserver
     restart: always
     environment:
@@ -120,7 +117,6 @@ services:
 # Environnement Hive #
   hive-server:
     image: mrugankray/hive-server-sqoop:1.0
-    hostname: hive-server
     container_name: hive-server
     depends_on:
       - namenode
@@ -142,7 +138,6 @@ services:
 
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
-    hostname: hive-metastore
     container_name: hive-metastore
     env_file:
       - ./hadoop.env
@@ -161,7 +156,6 @@ services:
 # Environnement Hue #
   huedb:
     image: postgres:15.1-alpine3.17
-    hostname: huedb
     container_name: huedb
     volumes:
       - hue_pg_data:/var/lib/postgresl/data/
@@ -175,7 +169,6 @@ services:
 
   hue:
     image: gethue/hue:4.6.0
-    hostname: hue
     container_name: hue
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 hive-metastore-postgresql:5432 hive-metastore:9083 hive-server:10000 resourcemanager:8088"
@@ -191,7 +184,6 @@ services:
 # Environnement SGBD PostGreSQL & pgadmin #
   external_postgres_db:
     image: postgres:15.1-alpine3.17
-    hostname: external_postgres_db
     container_name: external_postgres_db
     volumes:
       - external_postgres_db_data:/var/lib/postgresl/data/
@@ -216,8 +208,8 @@ services:
 # Environnement Impala #
   impala:
     image: apache/kudu:impala-latest
-    hostname: impala
     container_name: impala
+    hostname: impala
     restart: always
     ports:
       - "25000:25000"  # Interface web Impala
@@ -232,8 +224,6 @@ services:
       - NAMENODE_URI=hdfs://namenode:9000
       - FS_defaultFS=hdfs://namenode:9000
       - FS_DEFAULTFS=hdfs://namenode:9000
-      - fs_default_name=hdfs://namenode:9000
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
       - POSTGRES_USER=external
       - POSTGRES_PASSWORD=external
       - POSTGRES_PASSWORD=external
@@ -255,9 +245,9 @@ services:
   oozie:
     image: equemuelcompellon/hadoop-oozie:latest
     #image: pluk/oozie:latest      
-    hostname: oozie
     container_name: oozie
-    #user: "root"      
+    #user: "hdfs"      
+    hostname: oozie
     restart: always
     ports:
       - "11000:11000"  # Oozie Web Console
@@ -265,12 +255,14 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088 hive-metastore:9083"
       OOZIE_HTTP_HOSTNAME: oozie
+      #OOZIE_HTTP_HOSTNAME: localhost
       OOZIE_HTTP_PORT: 11000
+      #OOZIE_BASE_URL: http://localhost:11000/oozie
       OOZIE_BASE_URL: http://oozie:11000/oozie
       # Hadoop configuration
-      fs_default_name: hdfs://namenode:9000
-      FS_defaultFS: hdfs://namenode:9000
-      FS_DEFAULTFS: hdfs://namenode:9000
+      fs_defaultFS: hdfs://namenode:9000
+      #FS_defaultFS: hdfs://namenode:9000
+      #FS_DEFAULTFS: hdfs://namenode:9000
       CORE_CONF_fs_defaultFS: hdfs://namenode:9000
       YARN_CONF_yarn_resourcemanager_hostname: resourcemanager
       YARN_CONF_yarn_resourcemanager_address: resourcemanager:8032
@@ -280,9 +272,8 @@ services:
       CORE_CONF_hadoop_proxyuser_oozie_groups: "*"   
       CORE_CONF_hadoop_proxyuser_hdfs_hosts: "*"
       CORE_CONF_hadoop_proxyuser_hdfs_groups: "*"   
-      CORE_CONF_hadoop_proxyuser_user_hosts: "*"
-      CORE_CONF_hadoop_proxyuser_user_groups: "*"        
-      HADOOP_CONF_DIR: /etc/hadoop
+      # CORE_CONF_hadoop_proxyuser_user_hosts: "*"
+      # CORE_CONF_hadoop_proxyuser_user_groups: "*"   
       # Database configuration (using external PostgreSQL)
       OOZIE_DB_TYPE: postgres
       OOZIE_DB_HOST: external_postgres_db

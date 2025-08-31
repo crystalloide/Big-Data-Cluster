@@ -34,10 +34,17 @@
     
     <!-- Hadoop Configuration -->
     <property>
+        <name>fs.default.name</name>
+        <value>hdfs://namenode:9000</value>
+    </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://namenode:9000</value>
+    </property>
+    <property>
         <name>oozie.service.HadoopAccessorService.hadoop.configurations</name>
         <value>*=/opt/oozie/conf</value>
     </property>
-    
     <property>
         <name>oozie.service.WorkflowAppService.system.libpath</name>
         <value>/user/oozie/share/lib</value>
@@ -47,5 +54,35 @@
     <property>
         <name>oozie.authentication.type</name>
         <value>simple</value>
+    </property>
+    <!-- Proxy User Configurations: THIS MUST ALSO BE IN $HADOOP_HOME/etc/hadoop/core-site.xml  -->
+    <!-- =====================================================================================  -->
+    <propertyi>
+        <name>oozie.service.ProxyUserService.proxyuser.hue.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>oozie.service.ProxyUserService.proxyuser.hue.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>oozie.service.ProxyUserService.proxyuser.hdfs.hosts</name>
+    <value>*</value>
+    </property>
+    <property>
+        <name>oozie.service.ProxyUserService.proxyuser.hdfs.groups</name>
+        <value>*</value>
+    </property>
+    <propertyi>
+        <name>oozie.service.ProxyUserService.proxyuser.user.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>oozie.service.ProxyUserService.proxyuser.user.groups</name>
+        <value>*</value>
+    </property>
+    <property>
+      <name>oozie.service.HadoopAccessorService.hadoop.configurations</name> 
+      <value>*=/etc/hadoop</value>
     </property>
 </configuration>
