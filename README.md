@@ -108,6 +108,18 @@ Ce fichier démarre un cluster destiné à faire des expérimentations sur des m
 sudo docker compose -f light-docker-compose-impala-oozie.yaml up -d
 ```
 
+
+### Pour les étudiants (IMT, ...) : Démarrer le cluster minimal avec les composants : 
+#### HDFS MR HIVE PIG SQOOP ZEPPELIN HUE IMPALA OOZIE AIRFLOW ZOOKEEPER POSTGRESQL
+Ce fichier démarre un cluster destiné à faire des expérimentations sur des machines limitées en ressource. 
+
+
+##### Sous Linux
+```sh
+sudo docker compose -f docker-compose-impala-IMT.yaml up -d
+```
+
+
 ### Démarrer le cluster de base
 Le cluster de base donne accès à Hadoop, PySpark, Airflow, Flume et Zeppelin. C'est un excellent point de départ si vous souhaitez tester certains de ces outils sans avoir à les installer sur votre ordinateur.
 
