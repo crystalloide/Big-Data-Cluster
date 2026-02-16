@@ -78,7 +78,7 @@ Ce fichier démarre un cluster destiné à faire des expérimentations sur des m
 ```sh
 sudo docker compose -f docker-compose-HADOOP-IMT.yaml up -d
 ```
-##### Après quelques minutes : on vérifié la consommation des ressources 
+##### Après quelques minutes : on vérifie le niveau de consommation des ressources 
 ```sh
 sudo docker stats
 ```
