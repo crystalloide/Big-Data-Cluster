@@ -116,7 +116,7 @@ Ce fichier démarre un cluster destiné à faire des expérimentations sur des m
 
 ##### Sous Linux
 ```sh
-sudo docker compose -f docker-compose-impala-IMT.yaml up -d
+sudo docker compose -f docker-compose-HADOOP-IMT.yaml up -d
 ```
 
 
