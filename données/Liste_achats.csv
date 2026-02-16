@@ -1,0 +1,14 @@
+id_client	nom_client	prenom_client	date_naissance	genre	produit_achete	quantite	prix_unitaire
+1	DELATABLE	Jean	1987-08-10	Masculin	nourriture	2	10
+2	DURANT	Johnny	1982-11-10	Masculin	costume	1	4000
+3	MORANO	Princesse	1990-12-08	Feminin	voiture	1	10000
+4	GUIGALE	Julien	1983-08-03	Masculin	dentifrice	4	13
+5	MUNROE	Leon	1992-11-06	Masculin	livre	10	14
+6	DUPONT	Anae	1981-01-19	Feminin	voiture	1	7000
+7	MAGDALA	Marie	2000-08-03	Feminin	tablette	1	77
+8	BODOURT	Christophe	1996-08-10	Masculin	maison	1	125800
+9	LEMARCH	Jean-Michel	1991-08-03	Masculin	voiture	1	5900
+10	KRAG	Eric	1989-05-23	Masculin	voiture	1	8500
+11	BIZ	Yannick	1982-12-12	Masculin	nourriture	2	20
+12	BLANCHE	David	1985-01-20	Masculin	voiture	1	12000
+13	LACROIX	Simon	1979-08-10	Masculin	livre	1	22
