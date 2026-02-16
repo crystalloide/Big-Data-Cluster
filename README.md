@@ -65,7 +65,7 @@ Pour démarrer le cluster, exécutez les commandes suivantes depuis le répertoi
 ##### Sous Linux : clonage du projet : 
 ```sh
 cd ~
-rm -Rf Big-Data-Cluster
+sudo rm -Rf Big-Data-Cluster
 git clone https://github.com/crystalloide/Big-Data-Cluster
 cd Big-Data-Cluster
 ```
