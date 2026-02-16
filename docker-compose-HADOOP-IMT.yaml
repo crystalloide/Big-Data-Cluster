@@ -189,17 +189,7 @@ services:
       POSTGRES_USER: external
       POSTGRES_PASSWORD: external
       POSTGRES_DB: external
-  
-  external_pgadmin:
-    image: dpage/pgadmin4:6.18
-    container_name: external_pgadmin
-    ports:
-      - "5000:80"
-    environment:
-      - "PGADMIN_DEFAULT_EMAIL=pgadmin@xyz.com"
-      - "PGADMIN_DEFAULT_PASSWORD=external"
-    depends_on:
-      - external_postgres_db
+ 
 
 volumes:
   hadoop_namenode:
