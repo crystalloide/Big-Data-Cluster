@@ -70,8 +70,25 @@ git clone https://github.com/crystalloide/Big-Data-Cluster
 cd Big-Data-Cluster
 ```
 
-### Démarrer le cluster complet avec : 
-Ce fichier démarre tous les frameworks/technologies mentionnés : 
+### Pour les étudiants (IMT, ...) : Démarrer le cluster minimal avec les composants : 
+#### HDFS MR HIVE PIG SQOOP ZEPPELIN HUE IMPALA OOZIE AIRFLOW ZOOKEEPER POSTGRESQL
+Ce fichier démarre un cluster destiné à faire des expérimentations sur des machines limitées en ressource. 
+
+##### Sous Linux
+```sh
+sudo docker compose -f docker-compose-HADOOP-IMT.yaml up -d
+```
+##### Après quelques minutes : on vérifié la consommation des ressources 
+```sh
+sudo docker stats
+```
+
+
+
+
+
+### Plus bas, on verra pour démarrer un cluster complet : 
+Toutes les frameworks/technologies mentionnées ici : 
 |Application | URL |
 |--- |--- |
 | Interface utilisateur Namenode | http://localhost:9870/dfshealth.html#tab-overview |
@@ -107,18 +124,6 @@ Ce fichier démarre un cluster destiné à faire des expérimentations sur des m
 ```sh
 sudo docker compose -f light-docker-compose-impala-oozie.yaml up -d
 ```
-
-
-### Pour les étudiants (IMT, ...) : Démarrer le cluster minimal avec les composants : 
-#### HDFS MR HIVE PIG SQOOP ZEPPELIN HUE IMPALA OOZIE AIRFLOW ZOOKEEPER POSTGRESQL
-Ce fichier démarre un cluster destiné à faire des expérimentations sur des machines limitées en ressource. 
-
-
-##### Sous Linux
-```sh
-sudo docker compose -f docker-compose-HADOOP-IMT.yaml up -d
-```
-
 
 ### Démarrer le cluster de base
 Le cluster de base donne accès à Hadoop, PySpark, Airflow, Flume et Zeppelin. C'est un excellent point de départ si vous souhaitez tester certains de ces outils sans avoir à les installer sur votre ordinateur.
