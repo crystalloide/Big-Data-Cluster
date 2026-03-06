@@ -71,7 +71,7 @@ cd Big-Data-Cluster
 ```
 
 ### Pour les étudiants (IMT, ...) : Démarrer le cluster minimal avec les composants : 
-#### HDFS MR HIVE PIG SQOOP ZEPPELIN HUE IMPALA OOZIE AIRFLOW ZOOKEEPER POSTGRESQL
+##### HDFS MR HIVE PIG SQOOP ZEPPELIN HUE IMPALA OOZIE AIRFLOW ZOOKEEPER POSTGRESQL
 Ce fichier démarre un cluster destiné à faire des expérimentations sur des machines limitées en ressource. 
 
 ##### Sous Linux
@@ -100,7 +100,7 @@ Toutes les frameworks/technologies mentionnées ici :
 | Hue | http://localhost:8888 |
 | Interface utilisateur Spark Master | http://localhost:8080 |
 | Interface utilisateur Spark Slave | http://localhost:8081 |
-| Interface utilisateur Spark Driver | http://localhost:4040 (accessible uniquement après le démarrage d'un pilote) |
+| Interface utilisateur Spark Driver | http://localhost:4040 (accessible uniquement après le démarrage d'un driver) |
 | Interface utilisateur Zeppelin | http://localhost:8082 |
 | Interface utilisateur Airflow | http://localhost:3000 |
 | Interface utilisateur pgAdmin | http://localhost:5000 |
