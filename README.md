@@ -489,8 +489,10 @@ ________________________________________________________________________________
 ## Configuration_HUE
 Vous pouvez configurer le serveur Hue en modifiant le fichier « hue-overrides.ini » dans le répertoire du projet.
 
-##### Configurer la base de données Hue
-Hue est configuré pour utiliser Postgres dans le conteneur « huedb ». La configuration par défaut est la suivante : ```sh
+##### Configurer la base de données Hue :
+    Hue est configuré pour utiliser Postgres dans le conteneur « huedb ». 
+    La configuration par défaut est la suivante : 
+```sh
 engine=postgresql_psycopg2
 host=huedb
 port=5432
@@ -499,8 +501,9 @@ password=hue
 name=hue
 ```
 
-##### Configurer Hue pour exécuter Hive
-Hue se connecte au conteneur `hive-server` via le port `10000`. Voici la configuration pour ce même conteneur.
+##### Configurer Hue pour exécuter Hive :
+    Hue se connecte au conteneur `hive-server` via le port `10000`. 
+    Voici la configuration pour ce même conteneur.
 ```sh
 [beeswax]
 
